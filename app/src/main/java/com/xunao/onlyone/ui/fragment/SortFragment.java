@@ -8,8 +8,8 @@ import android.widget.ListView;
 
 import com.xunao.onlyone.R;
 import com.xunao.onlyone.ui.activity.SearchActivity;
-import com.xunao.onlyone.ui.adapter.RecommendLeftAdapter;
-import com.xunao.onlyone.ui.adapter.RecommendRightAdapter;
+import com.xunao.onlyone.ui.adapter.SortLeftAdapter;
+import com.xunao.onlyone.ui.adapter.SortRightAdapter;
 import com.xunao.onlyone.ui.base.BaseFragment;
 import com.xunao.onlyone.ui.widget.PinnedHeaderListView;
 
@@ -26,16 +26,16 @@ public class SortFragment extends BaseFragment {
     ImageView imgSearch;
     @BindView(R.id.img_message)
     ImageView imgMessage;
-    @BindView(R.id.listview_recommend)
-    ListView listviewRecommend;
+    @BindView(R.id.listview_left)
+    ListView listviewLeft;
     @BindView(R.id.pinnedheaderlistview)
     PinnedHeaderListView pinnedHeaderListView;
     private boolean isScroll = true;
-    private RecommendLeftAdapter adapter;
+    private SortLeftAdapter adapter;
 
-    private String[] leftStr = new String[]{"数码产品","数码产品", "数码产品", "数码产品","数码产品","数码产品","数码产品","数码产品","数码产品"};
+    private String[] leftStr = new String[]{"数码产品","家用电器", "健身器材", "美食天地","虚拟充值","生活日用","玩具乐器","办公用品","家具建材"};
     private boolean[] flagArray = {true, false, false, false, false, false, false, false, false};
-    private String[][] rightStr = new String[][]{{"手机", "手机", "手机"},
+    private String[][] rightStr = new String[][]{{"手机1", "手机", "手机"},
             {"手机", "手机","手机"},
             {"手机", "手机","手机"}, {"手机","手机","手机"}, {"手机","手机","手机"},
             {"手机","手机","手机"}, {"手机","手机","手机","手机"},
@@ -49,16 +49,15 @@ public class SortFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-      final  RecommendRightAdapter rightAdapter = new RecommendRightAdapter(baseActivity, leftStr, rightStr);
+      final SortRightAdapter rightAdapter = new SortRightAdapter(baseActivity, leftStr, rightStr);
         pinnedHeaderListView.setAdapter(rightAdapter);
-        adapter = new RecommendLeftAdapter(baseActivity, leftStr, flagArray);
-        listviewRecommend.setAdapter(adapter);
-        listviewRecommend.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        adapter = new SortLeftAdapter(baseActivity, leftStr, flagArray);
+        listviewLeft.setAdapter(adapter);
+        listviewLeft.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3) {
                 isScroll = false;
-
                 for (int i = 0; i < leftStr.length; i++) {
                     if (i == position) {
                         flagArray[i] = true;
@@ -85,12 +84,12 @@ public class SortFragment extends BaseFragment {
                     case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
                         // 判断滚动到底部
                         if (pinnedHeaderListView.getLastVisiblePosition() == (pinnedHeaderListView.getCount() - 1)) {
-                            listviewRecommend.setSelection(ListView.FOCUS_DOWN);
+                            listviewLeft.setSelection(ListView.FOCUS_DOWN);
                         }
 
                         // 判断滚动到顶部
                         if (pinnedHeaderListView.getFirstVisiblePosition() == 0) {
-                            listviewRecommend.setSelection(0);
+                            listviewLeft.setSelection(0);
                         }
 
                         break;
@@ -115,16 +114,16 @@ public class SortFragment extends BaseFragment {
                     if (x != y) {
                         adapter.notifyDataSetChanged();
                         y = x;
-                        if (y == listviewRecommend.getLastVisiblePosition()) {
+                        if (y == listviewLeft.getLastVisiblePosition()) {
 //                            z = z + 3;
-                            listviewRecommend.setSelection(z);
+                            listviewLeft.setSelection(z);
                         }
-                        if (x == listviewRecommend.getFirstVisiblePosition()) {
+                        if (x == listviewLeft.getFirstVisiblePosition()) {
 //                            z = z - 1;
-                            listviewRecommend.setSelection(z);
+                            listviewLeft.setSelection(z);
                         }
                         if (firstVisibleItem + visibleItemCount == totalItemCount - 1) {
-                            listviewRecommend.setSelection(ListView.FOCUS_DOWN);
+                            listviewLeft.setSelection(ListView.FOCUS_DOWN);
                         }
                     }
                 } else {

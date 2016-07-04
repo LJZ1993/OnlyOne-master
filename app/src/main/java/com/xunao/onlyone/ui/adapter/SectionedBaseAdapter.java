@@ -2,6 +2,8 @@ package com.xunao.onlyone.ui.adapter;
 
 /**
  * Created by Administrator on 2016/6/30.
+ * 由于右边的数据和左边的数据有关，所以需要传入左边的数据
+ * 所以需要自定义一个适配器
  */
 import android.util.SparseArray;
 import android.view.View;

@@ -1,4 +1,8 @@
 package com.xunao.onlyone.ui.widget;
+/**
+ * Created by Administrator on 2016/6/30.
+ * 头部数据要和左边的数据一致并且右边的树叶滑动保持不变
+ */
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -96,8 +100,10 @@ public class PinnedHeaderListView extends ListView implements AbsListView.OnScro
 
         for (int i = firstVisibleItem; i < firstVisibleItem + visibleItemCount; i++) {
             if (mAdapter.isSectionHeader(i)) {
+                //在很多时候ListView列表数据不需要全部刷新，只需刷新有数据变化的那一条，这时可以用getChildAt(index)获取某个指定position的view，并对该view进行刷新。
                 View header = getChildAt(i - firstVisibleItem);
                 float headerTop = header.getTop();
+                //getMeasureHeight和getHeight的区别
                 float pinnedHeaderHeight = mCurrentHeader.getMeasuredHeight();
                 header.setVisibility(VISIBLE);
                 if (pinnedHeaderHeight >= headerTop && headerTop > 0) {

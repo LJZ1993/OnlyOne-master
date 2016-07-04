@@ -43,7 +43,7 @@ public class GridViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
                 ViewHolder holder = null;
         if (convertView == null) {
             holder = new ViewHolder();
@@ -55,8 +55,8 @@ public class GridViewAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Log.w("","");
         holder.tv_good.setText(rightStr[position]);
+       // Log.w("rightStr[position]",rightStr[position]);
         holder.imag_good.setImageResource(R.drawable.ic_loading_daisy);
         return convertView;
     }

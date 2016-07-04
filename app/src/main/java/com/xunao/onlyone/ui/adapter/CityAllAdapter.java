@@ -24,7 +24,6 @@ import java.util.List;
  * cc@cchao.org
  */
 public class CityAllAdapter extends BaseAdapter {
-
     private static final int VIEW_TYPE_COUNT = 4;
 
     private Context context;

@@ -57,6 +57,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@android:color/white"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="推荐分类"
@@ -69,18 +70,21 @@
                 android:background="#dddddd" />
 
             <ListView
-                android:scrollbars="none"
                 android:id="@+id/listview_left"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></ListView>
+                android:layout_height="match_parent"
+                android:scrollbars="none"></ListView>
         </LinearLayout>
 
 
-<com.xunao.onlyone.ui.widget.PinnedHeaderListView
-        android:id="@+id/pinnedheaderlistview"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3" />
+        <com.xunao.onlyone.ui.widget.PinnedHeaderListView
+            android:id="@+id/pinnedheaderlistview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:divider="#00000000"
+            android:dividerHeight="0dp"
+            android:layout_weight="3"
+            android:scrollbars="none" />
     </LinearLayout>
 
 </RelativeLayout>

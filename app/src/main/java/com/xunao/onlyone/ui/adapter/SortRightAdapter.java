@@ -1,6 +1,7 @@
 package com.xunao.onlyone.ui.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +34,7 @@ public class SortRightAdapter extends SectionedBaseAdapter {
 
     @Override
     public long getItemId(int section, int position) {
-        return position;
+        return section;
     }
 
     @Override
@@ -43,37 +44,44 @@ public class SortRightAdapter extends SectionedBaseAdapter {
 
     @Override
     public int getCountForSection(int section) {
-        return rightStr[section].length;
+        return 1;
     }
 
     @Override
     public View getItemView(final int section, final int position, View convertView, ViewGroup parent) {
         LinearLayout layout = null;
-        ViewHolder holder=null;
+        ViewHolder holder = null;
         if (convertView == null) {
-            holder =  new ViewHolder();
+            holder = new ViewHolder();
             LayoutInflater inflator = (LayoutInflater) parent.getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = (LinearLayout) inflator.inflate(R.layout.item_sort_right, null);
             holder.gridView = (GridView) convertView.findViewById(R.id.listview_item_gridview);
             convertView.setTag(holder);
         } else {
-           holder = (ViewHolder) convertView.getTag();
+            holder = (ViewHolder) convertView.getTag();
         }
-        GridViewAdapter gridViewAdapter=new GridViewAdapter(mContext,rightStr );
+        //选中的section
+        String leftSelectStr = leftStr[section];
+      //  Log.w("leftSelectStr",leftSelectStr);
+        String[] rightSelectStr = rightStr[section];
+        Log.w("rightSelectStr",rightSelectStr.length+"");
+        GridViewAdapter gridViewAdapter = new GridViewAdapter(mContext, leftSelectStr, rightSelectStr);
         holder.gridView.setAdapter(gridViewAdapter);
         return convertView;
     }
-    private class ViewHolder{
+
+    private class ViewHolder {
         GridView gridView;
     }
+
     @Override
     public View getSectionHeaderView(int section, View convertView, ViewGroup parent) {
         LinearLayout layout = null;
         if (convertView == null) {
             LayoutInflater inflator = (LayoutInflater) parent.getContext()
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            layout = (LinearLayout) inflator.inflate(R.layout.item_recommend_header, null);
+            layout = (LinearLayout) inflator.inflate(R.layout.item_sort_header, null);
         } else {
             layout = (LinearLayout) convertView;
         }

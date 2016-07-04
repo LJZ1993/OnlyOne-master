@@ -34,13 +34,18 @@ public class SortFragment extends BaseFragment {
     private boolean isScroll = true;
     private SortLeftAdapter adapter;
     //从服务器上获取数据（左边是字符串，用数组；右边有图片和字符串，需要使用对象）
-    private String[] leftStr = new String[]{"数码产品","家用电器", "健身器材", "美食天地","虚拟充值","生活日用","玩具乐器","办公用品","家具建材"};
-    private boolean[] flagArray = {true, false, false, false, false, false, false, false, false};
+    //所以左边数据仍然用数组表示，右边换成集合
+    private String[] leftStr = new String[]{"数码产品","家用电器", "健身器材", "美食天地","虚拟充值","生活日用","玩具乐器","办公用品","家具建材","数码产品","家用电器", "健身器材", "美食天地","虚拟充值","生活日用","玩具乐器","办公用品","家具建材"};
+    private boolean[] flagArray = {true, false, false, false, false, false, false, false, false,false, false, false, false, false, false, false, false, false};
     private String[][] rightStr = new String[][]{{"手机","笔记本","照相机","微单","摄像机"},
             {"手机4", "手机5","手机6","手机61"},
             {"手机7", "手机8"}, {"手机10","手机11","手机12"}, {"手机13","手机14","手机15"},
             {"手机a","手机s","手机d"}, {"手机f","手机g","手机h"},
-            {"手机k","手机m","手机n"}, {"手机x","手机z","手机q"}
+            {"手机k","手机m","手机n"}, {"手机x","手机z","手机q"},{"手机","笔记本","照相机","微单","摄像机"},
+            {"手机4", "手机5","手机6","手机61"},
+            {"手机7", "手机8"}, {"手机10","手机11","手机12"}, {"手机13","手机14","手机15"},
+            {"手机a","手机s","手机d"}, {"手机f","手机g","手机h"},
+            {"手机k","手机m","手机n"}, {"手机x","手机z","手机q","手机z","手机q","手机z","手机q","手机z","手机q","手机z","手机q","手机z","手机q","手机z","手机q"}
     };
 
     @Override

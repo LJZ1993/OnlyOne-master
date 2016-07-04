@@ -7,7 +7,7 @@
     >
 
     <ImageView
-        android:id="@+id/imag_good"
+        android:id="@+id/imag_grid_good"
         android:src="@drawable/ic_default"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -15,13 +15,13 @@
          />
 
     <TextView
-        android:id="@+id/tv_good"
-        android:layout_below="@+id/imag_good"
+        android:id="@+id/tv_grid_good"
+        android:layout_below="@+id/imag_grid_good"
         android:layout_height="match_parent"
         android:layout_width="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="手机" />
+        />
 
 
 </RelativeLayout>

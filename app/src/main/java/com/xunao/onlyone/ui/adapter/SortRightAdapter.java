@@ -34,7 +34,7 @@ public class SortRightAdapter extends SectionedBaseAdapter {
 
     @Override
     public long getItemId(int section, int position) {
-        return section;
+        return 0;
     }
 
     @Override
@@ -63,31 +63,35 @@ public class SortRightAdapter extends SectionedBaseAdapter {
         }
         //选中的section
         String leftSelectStr = leftStr[section];
-      //  Log.w("leftSelectStr",leftSelectStr);
         String[] rightSelectStr = rightStr[section];
-        Log.w("rightSelectStr",rightSelectStr.length+"");
         GridViewAdapter gridViewAdapter = new GridViewAdapter(mContext, leftSelectStr, rightSelectStr);
         holder.gridView.setAdapter(gridViewAdapter);
         return convertView;
     }
 
-    private class ViewHolder {
-        GridView gridView;
-    }
 
     @Override
     public View getSectionHeaderView(int section, View convertView, ViewGroup parent) {
-        LinearLayout layout = null;
+        ViewHolder holder;
         if (convertView == null) {
-            LayoutInflater inflator = (LayoutInflater) parent.getContext()
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            layout = (LinearLayout) inflator.inflate(R.layout.item_sort_header, null);
+            holder = new ViewHolder();
+            //LayoutInflate有三种写法
+            LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.item_sort_header, null);
+            holder.tv = (TextView) convertView.findViewById(R.id.textItem);
+            convertView.setTag(holder);
         } else {
-            layout = (LinearLayout) convertView;
+            holder = (ViewHolder) convertView.getTag();
         }
-        layout.setClickable(false);
-        ((TextView) layout.findViewById(R.id.textItem)).setText(leftStr[section]);
-        return layout;
+        holder.tv.setText(leftStr[section]);
+        return convertView;
     }
+
+    private class ViewHolder {
+        GridView gridView;
+        TextView tv;
+    }
+
+
 
 }

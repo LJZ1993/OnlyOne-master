@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xunao.onlyone.R;
+import com.xunao.onlyone.util.ToastUtil;
 
 /**
  * Created by Administrator on 2016/6/30.
@@ -19,7 +20,7 @@ public class GridViewAdapter extends BaseAdapter {
     private Context mContext;
     private String[] rightStr;
     private String leftStr;
-
+    //baseAdapter的四个抽象方法
     public GridViewAdapter(Context mContext, String leftSelectStr, String[] rightSelectStr) {
         this.mContext = mContext;
         this.leftStr = leftSelectStr;
@@ -29,6 +30,7 @@ public class GridViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+       // return rightStr.length-5;
         return rightStr.length;
     }
 
@@ -55,6 +57,12 @@ public class GridViewAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtil.Infotoast(mContext,"点击提示");
+            }
+        });
         holder.tv_good.setText(rightStr[position]);
        // Log.w("rightStr[position]",rightStr[position]);
         holder.imag_good.setImageResource(R.drawable.ic_loading_daisy);

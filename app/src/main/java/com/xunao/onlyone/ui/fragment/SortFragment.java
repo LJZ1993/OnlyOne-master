@@ -1,5 +1,6 @@
 package com.xunao.onlyone.ui.fragment;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
@@ -33,6 +34,17 @@ public class SortFragment extends BaseFragment {
     PinnedHeaderListView pinnedHeaderListView;
     private boolean isScroll = true;
     private SortLeftAdapter adapter;
+    //TODO 测试数据 没有完成
+    private  Handler handler=new Handler();
+    private void getData(){
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        },1000);
+    }
+
     //从服务器上获取数据（左边是字符串，用数组；右边有图片和字符串，需要使用对象）
     //所以左边数据仍然用数组表示，右边换成集合
     private String[] leftStr = new String[]{"数码产品","家用电器", "健身器材", "美食天地","虚拟充值","生活日用","玩具乐器","办公用品","家具建材","数码产品","家用电器", "健身器材", "美食天地","虚拟充值","生活日用","玩具乐器","办公用品","家具建材"};
@@ -77,7 +89,7 @@ public class SortFragment extends BaseFragment {
                     rightSection += rightAdapter.getCountForSection(i) + 1;
                 }
                 pinnedHeaderListView.setSelection(rightSection);
-                Log.w("rightSection","rightSection"+rightSection);
+               // Log.w("rightSection","rightSection"+rightSection);
 
             }
 

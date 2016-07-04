@@ -1,6 +1,7 @@
 package com.xunao.onlyone.ui.widget;
 /**
  * Created by Administrator on 2016/6/30.
+ * 自定义控件
  * 头部数据要和左边的数据一致并且右边的树叶滑动保持不变
  */
 
